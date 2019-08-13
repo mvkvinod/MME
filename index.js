@@ -1,23 +1,26 @@
 const express = require("express");
-const expObj = express();
-const mongoose = require("mongoose");
-const dotenv = require("dotenv").config();
+const app = express();
+const sign_up = require("./routes/sign_up");
+const log_in = require("./routes/login");
+const db = require("./config/DB");
 
-//Initial route 
-expObj.get("/", (req, res) => {
-  res.send("Success");
+//Initial route
+app.get("/", (req, res) => {
+  res.sendFile("./html/index.html", { root: __dirname });
 });
 
-//  DB Connection
-mongoose.connect(
-  process.env.DB_CONNECT,
-  {
-    useNewUrlParser: true
-  },
-  () => console.log("Connected to DB!!!")
-);
+//checking DB conection
+db.authenticate()
+  .then(() => console.log("DataBase connected from index.js"))
+  .catch(err => console.log("Error at DB connection Index.js ::" + err));
 
-expObj.use(express.json());
+app.use(express.json());
 
-// PORT 
-expObj.listen(1313, () => console.log("server running on PORT:1313 "));
+//route middleware
+//Sign Up route
+app.use("/api/signUp", sign_up);
+//Login Route
+app.use("/api/login", log_in);
+
+// PORT
+app.listen(1313, () => console.log("server running on PORT:1313 "));

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <style>
+    h4 {
+      color: blueviolet;
+    }
+  </style>
+  <body>
+    <!-- use your j2ee form action link -->
+    <center>
+      SignUp
+      <form action="http://localhost:1313/api/signUp/ownerSignUp" method="POST">
+        <h4>Owner Name</h4>
+        <input type="text" id="ownerName" name="ownerName" />
+        <h4>Pharmacy Name</h4>
+        <input type="text" id="pharmaName" name="pharmaName" />
+        <h4>License Number</h4>
+        <input type="text" name="licenseNo" id="licenseNo" />
+        <h4>Address</h4>
+        <input type="text" name="address" id="address" />
+        <h4>state</h4>
+        <input type="text" name="state" id="state" />
+        <h4>country</h4>
+        <input type="text" name="country" id="country" />
+        <h4>Pin-Code</h4>
+        <input type="text" name="pinCode" id="pinCode" />
+        <h4>Email</h4>
+        <input type="text" name="email" id="email" />
+        <!-- text box content is consider as string convert to integer  -->
+        <h4>mobil Number</h4>
+        <input
+          type="text"
+          name="mobileNo"
+          id="mobileNo"
+          minlength="10"
+          maxlength="10"
+        />
+        <h4>Password</h4>
+        <input type="password" name="password" id="password" />
+        <h4>Confirm Password</h4>
+        <input type="password" name="cpassword" id="cpassword" />
+        <input type="submit" />
+        <input type="reset" />
+      </form>
+    </center>
+  </body>
+</html>
